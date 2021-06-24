@@ -19,8 +19,9 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://raw.githubusercontent.com/edsiongithub/blogimages/master/20210624/error.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/edsiongithub/blogimages/master/20210624/%E5%8F%8Csshkey.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/edsiongithub/blogimages/master/20210624/ssh%E6%B5%8B%E8%AF%95.png">
 <meta property="article:published_time" content="2021-06-24T01:18:27.000Z">
-<meta property="article:modified_time" content="2021-06-24T07:56:05.661Z">
+<meta property="article:modified_time" content="2021-06-24T08:35:31.268Z">
 <meta property="article:author" content="达文西">
 <meta property="article:tag" content="git">
 <meta name="twitter:card" content="summary">
@@ -259,7 +260,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">638字</span>
+      <span class="post-count">787字</span>
     </span>
   </span>
 
@@ -268,7 +269,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">2分</span>
+      <span class="post-count">3分</span>
     </span>
   </span>
 </div>
@@ -296,8 +297,13 @@
 <p>一路回车，会在指定位置生成key文件，windowns系统默认在C:\Users\youruser.ssh 目录下生成id_rsa和id_rsa.pub文件，打开id_rsa.pub文件。github上新建一个SSH key，复制id_rsa.pub内容到github上的sshkey中保存。</p>
 <p><img src="https://raw.githubusercontent.com/edsiongithub/blogimages/master/20210624/error.png" alt="git上传报错"></p>
 <h3 id="双sshkey设置"><a href="#双sshkey设置" class="headerlink" title="双sshkey设置"></a>双sshkey设置</h3><p>比如我在电脑上，既想往github上传代码，又想往gitee上传代码，为了避免每次都要输入账号密码，我们就可以创建多个sshkey。默认创建第一个步骤如上面所示，接下来创建第二个sshkey，使用下面的命令，指定存储文件不要覆盖原来的就行了。</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;youremail&quot;</span> -f <span class="regexp">/c/</span>Users<span class="regexp">/youruser/</span>.ssh/gitee_rsa</span><br></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;youremail&quot;</span> -f <span class="regexp">/c/</span>Users<span class="regexp">/youruser/</span>.ssh/github_rsa</span><br></pre></td></tr></table></figure>
 <p><img src="https://raw.githubusercontent.com/edsiongithub/blogimages/master/20210624/%E5%8F%8Csshkey.png" alt="双sshkey"></p>
+<p>接下来在.ssh目录下创建一个config文件，输入以下内容：<br>注意IdentifyFile需要跟你创建sshkey时候指定gitee和github存储的rsa文件。为了方便匹配，在创建的时候，建议都使用-f指定存储的文件名（如gitee存储在gitee_rsa，github存储在github_rsa文件）。</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># gitee</span></span><br><span class="line">    Host gitee.com</span><br><span class="line">    HostName gitee.com</span><br><span class="line">    PreferredAuthentications publickey</span><br><span class="line">    IdentityFile <span class="regexp">/c/</span>Users<span class="regexp">/gxwang/</span>.ssh/id_rsa    </span><br><span class="line">    User git</span><br><span class="line"><span class="comment"># github</span></span><br><span class="line">    Host github.com</span><br><span class="line">    HostName github.com</span><br><span class="line">    PreferredAuthentications publickey</span><br><span class="line">    IdentityFile <span class="regexp">/c/</span>Users<span class="regexp">/gxwang/</span>.ssh/github_rsa</span><br><span class="line">    User git</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>保存config文件，使用下面的命令测试。出现如下的输出，则说明配置成功了。</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh -T <span class="symbol">git@</span>github.com</span><br><span class="line">ssh -T <span class="symbol">git@</span>gitee.com</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/edsiongithub/blogimages/master/20210624/ssh%E6%B5%8B%E8%AF%95.png" alt="测试ssh链接成功"></p>
 
     
 
