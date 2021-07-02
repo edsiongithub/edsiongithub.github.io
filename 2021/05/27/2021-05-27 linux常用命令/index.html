@@ -18,7 +18,7 @@
 <meta property="og:description" content="允许机器被远程ssh链接，需要安装openssh-server 123sudo apt install openssh-server# 使用如下命令查看是否安装ssh-server ，如果sshd 这个服务，则说明已经安装。ps -e | grep ssh">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-05-27T01:19:00.000Z">
-<meta property="article:modified_time" content="2021-06-23T06:17:36.749Z">
+<meta property="article:modified_time" content="2021-06-29T06:47:25.676Z">
 <meta property="article:author" content="达文西">
 <meta property="article:tag" content="linux">
 <meta property="article:tag" content="shell">
@@ -257,7 +257,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">387字</span>
+      <span class="post-count">457字</span>
     </span>
   </span>
 
@@ -266,7 +266,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">1分</span>
+      <span class="post-count">2分</span>
     </span>
   </span>
 </div>
@@ -289,6 +289,8 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak		<span class="comment">#备份源列表</span></span><br><span class="line">sudo vim /etc/apt/sources.list	<span class="comment">#打开源列表文件，光标移动至末尾，shift + Insert 粘贴下面的内容</span></span><br><span class="line">sudo apt-get update	<span class="comment">#更新源</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### 阿里云地址</span></span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse </span><br></pre></td></tr></table></figure></li>
 <li><p>vim 复制粘贴：命令模式下（按下esc键），p粘贴至游标前，P粘贴至游标后。Shift + Insert 可以使用系统剪切板内容。</p>
 </li>
+<li><p>如果安装的是Server版本的操作系统，只有命令行，没有图形界面。可以在系统安装完成后，再安装图形界面。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">apt-get update</span><br><span class="line"><span class="comment">#安装软件包</span></span><br><span class="line">apt-get install -y ubuntu-desktop lightdm gnome-session unity-greeter</span><br><span class="line"><span class="comment">#启动图形服务</span></span><br><span class="line">service lightdm start</span><br></pre></td></tr></table></figure></li>
 </ol>
 
     
@@ -650,6 +652,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">基础语法</a>
               </li>
             
             <div class="clearfix"></div>
