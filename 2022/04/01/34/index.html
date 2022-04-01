@@ -6,23 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://edsiongithub.github.io">
-  <title>达文西的博客</title>
+  <title>Linq知识集五（翻译） | 达文西的博客</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-    
-    <!-- <meta name="keywords" content="dotnet,python,C#,linux,js,jquery,javascript,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验">
-    <meta name="description" content="华东师范大学信息化治理办公室，工程师一枚"> -->
-  
-  <meta name="description" content="华东师范大学信息化治理办公室，工程师一枚">
-<meta property="og:type" content="website">
-<meta property="og:title" content="达文西的博客">
-<meta property="og:url" content="https://edsiongithub.github.io/page/3/index.html">
+  <meta name="description" content="原文起始连接：https:&#x2F;&#x2F;dotnettutorials.net&#x2F;course&#x2F;linq&#x2F; 说明：翻译接上篇，上一篇翻译了LINQ中的连接操作（Join，包括InnerJoin，GroupJoin，LeftJoin，CrossJoin）、元素操作（ElementAt、ElementAtOrDefault、First、FirstOrDefault、Last、LastOrDefault、Singl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linq知识集五（翻译）">
+<meta property="og:url" content="https://edsiongithub.github.io/2022/04/01/34/index.html">
 <meta property="og:site_name" content="达文西的博客">
-<meta property="og:description" content="华东师范大学信息化治理办公室，工程师一枚">
+<meta property="og:description" content="原文起始连接：https:&#x2F;&#x2F;dotnettutorials.net&#x2F;course&#x2F;linq&#x2F; 说明：翻译接上篇，上一篇翻译了LINQ中的连接操作（Join，包括InnerJoin，GroupJoin，LeftJoin，CrossJoin）、元素操作（ElementAt、ElementAtOrDefault、First、FirstOrDefault、Last、LastOrDefault、Singl">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-04-01T08:32:46.000Z">
+<meta property="article:modified_time" content="2022-04-01T12:14:09.992Z">
 <meta property="article:author" content="达文西">
-<meta property="article:tag" content="dotnet,python,C#,linux,js,jquery,javascript,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验">
+<meta property="article:tag" content="翻译">
+<meta property="article:tag" content="Linq">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="达文西的博客" type="application/atom+xml">
@@ -237,862 +236,309 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="Fri Apr 01 2022 16:32:46 GMT+0800 (中国标准时间)-20220401Linq翻译集" class="article article-type-Fri Apr 01 2022 16:32:46 GMT+0800 (中国标准时间) " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
-    <script src="/lib/oauthcallback.browser.js"></script>
+  
+    <h1 class="article-title" itemprop="name">
+      Linq知识集五（翻译）
+    </h1>
+  
+
+
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2022/04/01/34/" class="archive-article-date">
+        <time datetime="2022-04-01T08:32:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-01</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">2.4k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">10分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>原文起始连接：<a target="_blank" rel="noopener" href="https://dotnettutorials.net/course/linq/">https://dotnettutorials.net/course/linq/</a></p>
+<p>说明：翻译接上篇，上一篇翻译了LINQ中的连接操作（Join，包括InnerJoin，GroupJoin，LeftJoin，CrossJoin）、元素操作（ElementAt、ElementAtOrDefault、First、FirstOrDefault、Last、LastOrDefault、Single、SingleOrDefault、DefaultIfEmpty）以及SequenceEqual。本篇继续介绍LINQ中的其他操作。</p>
+<span id="more"></span>
+
+<h2 id="LINQ中的切分操作"><a href="#LINQ中的切分操作" class="headerlink" title="LINQ中的切分操作"></a>LINQ中的切分操作</h2><p>切分操作用于将数据源集合切割成两部分，返回指定一部分且不改变元素的位置。Linq中主要提供以下几个方法来切分数据源。这些操作主要用于数据分页。</p>
+<ul>
+<li>Take          需要选择数据源的前n条数据</li>
+<li>Skip          选择除去前n条数据的剩余所有数据（即跳过前n条数据）</li>
+<li>TakeWhile     需要选择数据源数据从满足指定条件的元素开始</li>
+<li>SkipWhile     跳过指定条件的数据，返回剩余的所有数据</li>
+</ul>
+<h3 id="Take-与-Skip"><a href="#Take-与-Skip" class="headerlink" title="Take 与 Skip"></a>Take 与 Skip</h3><p>这两个方法比较简单且相似，直接举例说明这两个方法使用。注意当数据源为null时使用Take和Skip将引发异常。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">List&lt;<span class="built_in">int</span>&gt; numbers = <span class="keyword">new</span> List&lt;<span class="built_in">int</span>&gt;() &#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span> &#125;;</span><br><span class="line"><span class="keyword">var</span> takeRes = numbers.Take(<span class="number">4</span>);</span><br><span class="line"><span class="keyword">var</span> skipRes= numbers.Skip(<span class="number">4</span>);</span><br><span class="line"><span class="comment">//通常对数据源先使用Where，再使用Take</span></span><br><span class="line"><span class="keyword">var</span> takeWithFilter = numbers.Where(num =&gt; num &gt; <span class="number">4</span>).Take(<span class="number">4</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="TakeWhile-与-SkipWhile"><a href="#TakeWhile-与-SkipWhile" class="headerlink" title="TakeWhile 与 SkipWhile"></a>TakeWhile 与 SkipWhile</h3><p>这两个方法用法相似，传递一个条件断言即可。类似于Where，但需要注意的是，TakeWhile是当符合条件时的数据，遇到一个不符合条件的元素，则停止即便该元素后仍然有符合条件的元素也不再返回了。而Where的条件断言则针对数据源 所有元素。下面看例子</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">List&lt;<span class="built_in">int</span>&gt; numbers = <span class="keyword">new</span> List&lt;<span class="built_in">int</span>&gt;() &#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>, <span class="number">4</span>, <span class="number">5</span> &#125;;</span><br><span class="line"><span class="comment">//下面输出结果应该为：1，2，3</span></span><br><span class="line"><span class="keyword">var</span> takeWhileRes = numbers.TakeWhile(num =&gt; num &lt; <span class="number">6</span>).ToList();</span><br><span class="line"><span class="comment">//下面输出结果应该为：1，2，3，4，5</span></span><br><span class="line"><span class="keyword">var</span> whereRes = numbers.Where(num =&gt; num &lt; <span class="number">6</span>).ToList();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> skipWhileWithIndex = numbers.SkipWhile((num,index) =&gt; num &gt; <span class="number">5</span>).ToList();</span><br></pre></td></tr></table></figure>
+
+<h3 id="分页操作"><a href="#分页操作" class="headerlink" title="分页操作"></a>分页操作</h3><p> 使用Linq进行分页，优点是只需要向数据库必须的数据，减少数据在网络中的传输。但缺点是，需要向数据库提交的请求次数将增加。可以通过一次请求将所有数据缓存到客户端，再进行分页操作。Linq分页的公式如下：<br> <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> pageNumer;</span><br><span class="line"><span class="built_in">int</span> pageSize;</span><br><span class="line"><span class="keyword">var</span> Result = DataSuource.Skip((pageNumer - <span class="number">1</span>) * pageSize).Take(pageSize);</span><br></pre></td></tr></table></figure></p>
+<h2 id="产生操作（非扩展方法）"><a href="#产生操作（非扩展方法）" class="headerlink" title="产生操作（非扩展方法）"></a>产生操作（非扩展方法）</h2><p>前面介绍的都是Linq提供的扩展方法，Enumerable类提供下面三个非扩展方法</p>
+<ul>
+<li>Range()</li>
+<li>Repeat<T>()</li>
+<li>Empty<T>()<br>这三个方法使用一个简单的表达式生成指定类型的数组、序列或集合，而不需要用循环来产生。返回的结果实现IEnumerable<T>接口。<br>由于返回的结果实现IEnumerable<T>接口的，因此可以在Range()方法后使用先前介绍过的所有扩展方法（Select，Where等）。<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">IEnumerable&lt;<span class="built_in">int</span>&gt; EvenNumbers = Enumerable.Range(<span class="number">10</span>,<span class="number">30</span>).Where(x =&gt; x%<span class="number">2</span> == <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"> IEnumerable&lt;<span class="built_in">string</span>&gt; rangewithString = Enumerable.Range(<span class="number">1</span>, <span class="number">2</span>).Select(x =&gt; (x * x) + <span class="string">&quot; &quot;</span> + CustomLogic(x)).ToArray();</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="built_in">string</span> <span class="title">CustomLogic</span>(<span class="params"><span class="built_in">int</span> x</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">string</span> result = <span class="built_in">string</span>.Empty;</span><br><span class="line">        <span class="keyword">switch</span> (x)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">                result = <span class="string">&quot;1st&quot;</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">                result = <span class="string">&quot;2nd&quot;</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>Repeat是直接产生指定类型元素指定数字次，看下面的例子</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IEnumerable&lt;<span class="built_in">string</span>&gt; repeatStrings = Enumerable.Repeat(<span class="string">&quot;Welcome to DOT NET Tutorials&quot;</span>, <span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+
+<p>Empty方法产生一个空的数据集，为什么需要这个方法来生成一个空的数据集呢？当我们在准备遍历一个方法返回的数据源时，该数据源有可能是null，如果我们直接遍历，则会产生异常。此时，我们就可以使用空值合并访问运算符来给null值一个默认空的集合，而不是null值来引发异常。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">var</span> emptyCollection1 = Enumerable.Empty&lt;<span class="built_in">string</span>&gt;();</span><br><span class="line"></span><br><span class="line"><span class="comment">//GetData可能返回null值</span></span><br><span class="line">IEnumerable&lt;<span class="built_in">int</span>&gt; integerSequence = GetData() ?? Enumerable.Empty&lt;<span class="built_in">int</span>&gt;();</span><br></pre></td></tr></table></figure>
+
+<h2 id="LINQ中的Append-和-Prepend"><a href="#LINQ中的Append-和-Prepend" class="headerlink" title="LINQ中的Append 和 Prepend"></a>LINQ中的Append 和 Prepend</h2><p>Append方法用于将一个元素添加到一个指定的数据源序列中。Append方法不修改序列的元素，因此它用原来的序列和新添加的元素创建一个序列的副本。Prepend方法和Append一样，它在序列前添加一个元素。看下Append和Prepend的签名：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="title">IEnumerable</span>&lt;<span class="title">TSource</span>&gt; <span class="title">Append</span>&lt;<span class="title">TSource</span>&gt;(<span class="params"><span class="keyword">this</span> IEnumerable&lt;TSource&gt; source, TSource element</span>)</span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="title">IEnumerable</span>&lt;<span class="title">TSource</span>&gt; <span class="title">Prepend</span>&lt;<span class="title">TSource</span>&gt;(<span class="params"><span class="keyword">this</span> IEnumerable&lt;TSource&gt; source, TSource element</span>)</span>;</span><br></pre></td></tr></table></figure>
+<p>下面举例子</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">List&lt;<span class="built_in">int</span>&gt; intSequence = <span class="keyword">new</span> List&lt;<span class="built_in">int</span>&gt; &#123;<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>&#125;;</span><br><span class="line">intSequnce.Append(<span class="number">5</span>);</span><br><span class="line">Console.WrilteLine(<span class="built_in">string</span>.Join(<span class="string">&quot;,&quot;</span>, intSequenc));<span class="comment">//输出的仍然是原列表</span></span><br><span class="line">List&lt;<span class="built_in">int</span>&gt; newList = intSequence.Append(<span class="number">5</span>);</span><br><span class="line">Console.WriteLine(<span class="built_in">string</span>.Join(<span class="string">&quot;,&quot;</span>, newList)); <span class="comment">//输出列表有新增的元素5</span></span><br><span class="line"></span><br><span class="line">List&lt;<span class="built_in">int</span>&gt; prependList = intSequence.Prepend(<span class="number">20</span>);</span><br><span class="line">Console.WriteLine(<span class="built_in">string</span>.Join(<span class="string">&quot;,&quot;</span>, prependList)); <span class="comment">//输出50，10，20，30，40</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="LINQ中的Zip方法"><a href="#LINQ中的Zip方法" class="headerlink" title="LINQ中的Zip方法"></a>LINQ中的Zip方法</h2><p>先看看Zip方法的签名：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="title">IEnumerable</span>&lt;<span class="title">TResult</span>&gt; <span class="title">Zip</span>&lt;<span class="title">TFirst</span>, <span class="title">TSecond</span>, <span class="title">TResult</span>&gt;(<span class="params"><span class="keyword">this</span> IEnumerable&lt;TFirst&gt; first, IEnumerable&lt;TSecond&gt; second, Func&lt;TFirst,TSecond,TResult&gt; resultSelector</span>)</span>;</span><br></pre></td></tr></table></figure>
+<p>Zip方法允许我们将两个数据源序列中的元素按照传入的方法合并，返回一个新的序列，该新的序列中的元素是原先两个序列的元素合并后的值。如果源数据序列长度不一致，则返回结果序列长度为两个中较短的那个序列的长度。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span>[] numbersSequence = &#123; <span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span> &#125;;</span><br><span class="line"><span class="built_in">string</span>[] wordsSequence = &#123; <span class="string">&quot;Ten&quot;</span>, <span class="string">&quot;Twenty&quot;</span>, <span class="string">&quot;Thirty&quot;</span>, <span class="string">&quot;Fourty&quot;</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> resultSequence = numbersSequence.Zip(wordsSequence, (first, second) =&gt; first + <span class="string">&quot; - &quot;</span> + second);</span><br><span class="line"><span class="keyword">foreach</span>(<span class="keyword">var</span> item <span class="keyword">in</span> resultSequence)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(item);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="延迟加载与立即执行"><a href="#延迟加载与立即执行" class="headerlink" title="延迟加载与立即执行"></a>延迟加载与立即执行</h2><p>这个话题又被提起了，按照原文的顺序，这一节应该介绍一下这两个概念。因为后面的ToList、ToArray方法都会立即执行Linq查询。因此，有必要在此说明一下。<br>Linq查询操作符共有两类：</p>
+<ul>
+<li>延迟或懒加载类： 这类查询操作符使用延迟执行，比如：Select、SelectMany、Where、Take、Skip等</li>
+<li>即时加载类：这类查询操作符使用立即执行，比如：Count、Average、Min、Max、First、Last、ToArray、ToList等。</li>
+</ul>
+<p>下面举例延迟加载，是指Linq的查询并不是在查询语句完成后，而是在我们去使用查询结果，比如遍历查询结果。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Employee</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> ID &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> Salary &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">List&lt;Employee&gt; listEmployees = <span class="keyword">new</span> List&lt;Employee&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">new</span> Employee &#123; ID= <span class="number">1001</span>, Name = <span class="string">&quot;Priyanka&quot;</span>, Salary = <span class="number">80000</span> &#125;,</span><br><span class="line">    <span class="keyword">new</span> Employee &#123; ID= <span class="number">1002</span>, Name = <span class="string">&quot;Anurag&quot;</span>, Salary = <span class="number">90000</span> &#125;,</span><br><span class="line">    <span class="keyword">new</span> Employee &#123; ID= <span class="number">1003</span>, Name = <span class="string">&quot;Preety&quot;</span>, Salary = <span class="number">80000</span> &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 下面的语句仅仅定义查询，并没有执行</span></span><br><span class="line"><span class="comment">// 如果查询执行了，结果存储在result中，那么我们在此语句后面给数据源再增加</span></span><br><span class="line"><span class="comment">//一条数据的话，将不会被输出</span></span><br><span class="line">IEnumerable&lt;Employee&gt; result = <span class="keyword">from</span> emp <span class="keyword">in</span> listEmployees</span><br><span class="line">                                <span class="keyword">where</span> emp.Salary == <span class="number">80000</span></span><br><span class="line">                                <span class="keyword">select</span> emp;</span><br><span class="line"><span class="comment">//下面两个查询，使用了ToList和Count方法，都将查询立即执行了</span></span><br><span class="line"><span class="comment">// var result = (from emp in listEmployees</span></span><br><span class="line"><span class="comment">//             where emp.Salary == 80000</span></span><br><span class="line"><span class="comment">//             select emp).ToList();</span></span><br><span class="line"><span class="comment">// var count = (from emp in listEmployees</span></span><br><span class="line"><span class="comment">//             where emp.Salary == 80000</span></span><br><span class="line"><span class="comment">//             select emp).Count();</span></span><br><span class="line"><span class="comment">// 给数据源增加一条数据</span></span><br><span class="line">listEmployees.Add(<span class="keyword">new</span> Employee &#123; ID = <span class="number">1004</span>, Name = <span class="string">&quot;Santosh&quot;</span>, Salary = <span class="number">80000</span> &#125;);</span><br><span class="line"><span class="comment">// 遍历结果集时，查询真正执行</span></span><br><span class="line"><span class="comment">// 定义查询语句后面增加的元素也会被输出进来，因为它也是符合查询条件的的</span></span><br><span class="line"><span class="keyword">foreach</span> (Employee emp <span class="keyword">in</span> result)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(<span class="string">$&quot; <span class="subst">&#123;emp.ID&#125;</span> <span class="subst">&#123;emp.Name&#125;</span> <span class="subst">&#123;emp.Salary&#125;</span>&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>延迟加载的好处</p>
+<ul>
+<li>避免不必要的查询执行从而提高应用效率</li>
+<li>查询的创建和执行解耦，因此我们可以分几步来定义查询</li>
+<li>当我们重新遍历时，Linq延迟执行通常重新计算，因此我们获得的总是最新数据</li>
+</ul>
+<h2 id="ToList和ToArray"><a href="#ToList和ToArray" class="headerlink" title="ToList和ToArray"></a>ToList和ToArray</h2><p>ToList方法将<code>System.Collections.Generic.IEnumerable&lt;T&gt;</code>转换成一个<code>System.Collections.Generic.List&lt;T&gt;</code>集合。ToArray则是将<code>System.Collections.Generic.List&lt;T&gt;</code>集合中的元素复制到一个新的数组。下面举例演示两个方法。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span>[] numbersArray = &#123; <span class="number">10</span>, <span class="number">22</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>, <span class="number">60</span> &#125;;</span><br><span class="line">List&lt;<span class="built_in">int</span>&gt; numbersList = numbersArray.ToList();</span><br><span class="line"></span><br><span class="line">List&lt;<span class="built_in">int</span>&gt; numbersList = <span class="keyword">new</span> List&lt;<span class="built_in">int</span>&gt;()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="number">10</span>, <span class="number">22</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>, <span class="number">60</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">int</span>[] numbersArray = numbersList.ToArray();</span><br></pre></td></tr></table></figure>
+
+<h2 id="ToDictionary"><a href="#ToDictionary" class="headerlink" title="ToDictionary"></a>ToDictionary</h2><p>该方法将<code>System.Collections.Generic.IEnumerable&lt;T&gt;</code>转换成一个<code>System.Collections.Generic.Dictionary&lt;TKey,TValue&gt;</code>，根据一个具体的键选择器。看看这个方法的签名:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="title">Dictionary</span>&lt;<span class="title">TKey</span>, <span class="title">TSource</span>&gt; <span class="title">ToDictionary</span>&lt;<span class="title">TSource</span>, <span class="title">TKey</span>&gt;(<span class="params"><span class="keyword">this</span> IEnumerable&lt;TSource&gt; source, Func&lt;TSource, TKey&gt; keySelector</span>)</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="title">Dictionary</span>&lt;<span class="title">TKey</span>, <span class="title">TEelement</span>&gt; <span class="title">ToDictionary</span>&lt;<span class="title">TSource</span>, <span class="title">TKey</span>, <span class="title">TElement</span>&gt;(<span class="params"><span class="keyword">this</span> IEnumerable&lt;TSource&gt; source, Func&lt;TSource, TKey&gt; keySelector, Func&lt;TSource, TElement&gt; elementSelector</span>)</span>;</span><br></pre></td></tr></table></figure>
+<p>下面举例</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Product&gt; listProducts = <span class="keyword">new</span> List&lt;Product&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">new</span> Product &#123; ID= <span class="number">1001</span>, Name = <span class="string">&quot;Mobile&quot;</span>, Price = <span class="number">800</span> &#125;,</span><br><span class="line">    <span class="keyword">new</span> Product &#123; ID= <span class="number">1002</span>, Name = <span class="string">&quot;Laptop&quot;</span>, Price = <span class="number">900</span> &#125;,</span><br><span class="line">    <span class="keyword">new</span> Product &#123; ID= <span class="number">1003</span>, Name = <span class="string">&quot;Desktop&quot;</span>, Price = <span class="number">800</span> &#125;</span><br><span class="line">&#125;;</span><br><span class="line">Dictionary&lt;<span class="built_in">int</span>, Product&gt; productsDictionary = listProducts.ToDictionary(x =&gt; x.ID);</span><br><span class="line"></span><br><span class="line"><span class="comment">//Dictionary键不允许重复，因此数据源中作为键的字段如果有重复，则会引发异常</span></span><br><span class="line">Dictionary&lt;<span class="built_in">int</span>, <span class="built_in">string</span>&gt; productsDictionary = listProducts.ToDictionary(x =&gt; x.ID, x =&gt; x.Name);</span><br><span class="line"></span><br><span class="line"><span class="keyword">foreach</span> (KeyValuePair&lt;<span class="built_in">int</span>, Product&gt; kvp <span class="keyword">in</span> productsDictionary)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(kvp.Key + <span class="string">&quot; Name : &quot;</span> + kvp.Value.Name + <span class="string">&quot;, Price: &quot;</span> + kvp.Value.Price);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Cast操作"><a href="#Cast操作" class="headerlink" title="Cast操作"></a>Cast操作</h2><p>Cast是将一个集合转换成另一个指定类型的集合，新集合中的元素还是原来集合中的元素。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ArrayList list = <span class="keyword">new</span> ArrayList&#123; <span class="number">10</span>, <span class="number">20</span>,<span class="number">30</span> &#125;;</span><br><span class="line">IEnumerable&lt;<span class="built_in">int</span>&gt; result = list.Cast&lt;<span class="built_in">int</span>&gt;();</span><br></pre></td></tr></table></figure>
+<p>Cast与OfType的区别：<br>Cast将会转换列表中的所有元素，如果有元素无法进行类型转换，则会引发异常（InvalidCastException）。而根据前面的介绍，OfType则是返回所有符合指定类型的元素，而不进行类型转换。</p>
+
+    
+
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          达文西
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://edsiongithub.github.io/2022/04/01/34/" title="Linq知识集五（翻译）" target="_blank">https://edsiongithub.github.io/2022/04/01/34/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">翻译</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Linq</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/C//" class="article-tag-list-link color3">C#</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/C/翻译//" class="article-tag-list-link color3">翻译</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://edsiongithub.github.io/2022/04/01/34/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2022/03/31/33/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Linq知识集四（翻译）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+
+  <div id="giteement-ctn"></div>
+  
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    Oauthcallback();
+  <!-- id: "Linq知识集五（翻译）" -->
+  var giteement = new Giteement({
+    id: '20220401163246',
+    owner: 'gxwang',
+    repo: 'hexocomments',
+    backcall_uri: 'https://edsiongithub.github.io/',
+    oauth_uri: 'https://cors-anywhere.herokuapp.com/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: '2ca528ed2c430f0c234e0bcfea432d11bb5c9347f5386137113afd65b02fe92f',
+      client_secret: '267a4ee02bfb0288470c5fb241f1c8d4bd03e4cb0cf8fa94bfddcf7894cded25'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
-    <article id="Thu Nov 04 2021 11:04:52 GMT+0800 (中国标准时间)-20211104entityframework2" class="article article-type-Thu Nov 04 2021 11:04:52 GMT+0800 (中国标准时间)  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/11/04/21/" target="_blank">entityframework基础(二)</a>
-  
-    </h1>
-  
 
 
-  
-  
-<a href="/2021/11/04/21/" class="archive-article-date">
-        <time datetime="2021-11-04T03:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-04</time>
-</a>
 
-  
-  
-    
 
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>记录一些EntityFramework中的使用技巧，不定期更新。</p>
-<ul>
-<li>日志记录及拦截</li>
-<li>IQueryable<T> 与 IEnumerable<T>与延迟加载</li>
-</ul>
-    
-    <a class="article-more-a" href="/2021/11/04/21/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">C#</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">EntityFramework</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/C//" class="article-tag-list-link color3">C#</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/C/EntityFramework//" class="article-tag-list-link color1">EntityFramework</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/11/04/21/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="Thu Oct 28 2021 15:35:23 GMT+0800 (中国标准时间)-20211028sql-server知识归纳总结" class="article article-type-Thu Oct 28 2021 15:35:23 GMT+0800 (中国标准时间)  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/10/28/20/" target="_blank">sql server知识归纳总结</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/10/28/20/" class="archive-article-date">
-        <time datetime="2021-10-28T07:35:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-28</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>Sql Server 知识点总结：</p>
-<ul>
-<li>索引（INDEX）</li>
-<li>连接（JOIN）</li>
-<li>联合（UNION）</li>
-<li>键（KEY）</li>
-</ul>
-    
-    <a class="article-more-a" href="/2021/10/28/20/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">sqlserver</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据库//" class="article-tag-list-link color4">数据库</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/10/28/20/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="Mon Oct 25 2021 20:34:00 GMT+0800 (中国标准时间)-20211026entityframework1" class="article article-type-Mon Oct 25 2021 20:34:00 GMT+0800 (中国标准时间)  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/10/26/19/" target="_blank">entityframework基础(一)</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/10/26/19/" class="archive-article-date">
-        <time datetime="2021-10-26T01:57:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-26</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>使用EntityFrameWork基本步骤，Db First模式</p>
-<ol>
-<li>Nuget上安装EntityFrameWork</li>
-<li>配置文件中写连接字符串</li>
-<li>创建DbContext</li>
-<li>创建Entity，对应到数据库表字段</li>
-<li>实例化DbContext，并创建增删改查<br>下面以Console类型项目，简单展示EntityFrameWork使用过程。事先创建数据库，并建立表及测试数据。本文先介绍纯手工方式使用EntityFrameWork，如果习惯于早期的<code>Ado.Net</code>方式访问数据库，那么这样来使用EntityFrameWork就不会太陌生。最后还会介绍使用配置向导来生成所需要的各种类。
-    
-    <a class="article-more-a" href="/2021/10/26/19/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">C#</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">EntityFramework</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/C//" class="article-tag-list-link color3">C#</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/C/EntityFramework//" class="article-tag-list-link color1">EntityFramework</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/10/26/19/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="Mon Oct 18 2021 08:17:11 GMT+0800 (中国标准时间)-20211018windows-netsh-proxy" class="article article-type-Mon Oct 18 2021 08:17:11 GMT+0800 (中国标准时间)  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/10/18/18/" target="_blank">windows上使用netsh映射端口至Hyper-v虚拟机</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/10/18/18/" class="archive-article-date">
-        <time datetime="2021-10-18T00:17:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-18</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>前段时间折腾Hyper-v虚拟机的双网卡功能，按照某些教程，理论上一个内部网络接口，一个外部网络接口，是能够满足需求了的。</p>
-    
-    <a class="article-more-a" href="/2021/10/18/18/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">windowns</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">netsh proxy</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/操作系统及网络//" class="article-tag-list-link color3">操作系统及网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/10/18/18/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2021-10-09 python人脸识别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/10/09/17/" target="_blank">python实现简单的人脸识别</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/10/09/17/" class="archive-article-date">
-        <time datetime="2021-10-09T06:04:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-09</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>想做一个简单的人脸识别，大概的需求：通过笔记本的摄像头获取人脸，根据已保存的图片标签（文件名以名字命名），识别出面部后，将名字打印在摄像头的获取界面。</p>
-<p>搜索后确定技术方案：python + opencv + face_recognition</p>
-    
-    <a class="article-more-a" href="/2021/10/09/17/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">opencv-python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人脸识别</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/python//" class="article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/10/09/17/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="Sun Sep 26 2021 00:00:00 GMT+0800 (中国标准时间)-2021-09-26 hexo yilia plus mermaid" class="article article-type-Sun Sep 26 2021 00:00:00 GMT+0800 (中国标准时间)  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/09/26/16/" target="_blank">hexo yilia plus主题支持mermaid流程图</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/09/26/16/" class="archive-article-date">
-        <time datetime="2021-09-26T02:04:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-26</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>hexo默认不支持流程图，需要安装插件才能使用。具体参考<br>github上的链接，<a target="_blank" rel="noopener" href="https://github.com/webappdevelp/hexo-filter-mermaid-diagrams">mermaid插件</a>。</p>
-    
-    <a class="article-more-a" href="/2021/09/26/16/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">mermaid</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/hexo，git-and-markdown//" class="article-tag-list-link color2">hexo，git and markdown</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/09/26/16/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="Fri Sep 17 2021 00:00:00 GMT+0800 (中国标准时间)-2021-09-16 powershell" class="article article-type-Fri Sep 17 2021 00:00:00 GMT+0800 (中国标准时间)  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/09/17/0019/" target="_blank">windows powershell 常用功能</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/09/17/0019/" class="archive-article-date">
-        <time datetime="2021-09-17T02:04:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-17</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>使用windowns操作系统的，对cmd命令提示符不会陌生。powershell可以看作cmd的升级版，可以通过powershell命令做许多自动化管理。这里记录在powershell使用过程中遇到的一些问题解决，以及一些常用的使用命令。</p>
-    
-    <a class="article-more-a" href="/2021/09/17/0019/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">powershell</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/操作系统及网络//" class="article-tag-list-link color3">操作系统及网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/09/17/0019/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="Mon Sep 13 2021 00:00:00 GMT+0800 (中国标准时间)-2021-09-13 python-flask常用" class="article article-type-Mon Sep 13 2021 00:00:00 GMT+0800 (中国标准时间)  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/09/13/0018/" target="_blank">python-flask常用命令及pear-admin项目分析</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/09/13/0018/" class="archive-article-date">
-        <time datetime="2021-09-13T02:04:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-13</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>python flask框架的学习已经有几个月了，中间断了一段时间后，发现许多命令不记得了。尤其虚拟环境相关的几条命令，总是忘记。另外，最近把开发环境移到一台ubuntu虚拟机上了，于是记录一些常用的命令，会随时增加。第二部分则是对一个PearAdmin的开源项目学习笔记。</p>
-    
-    <a class="article-more-a" href="/2021/09/13/0018/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">flask</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/python//" class="article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/09/13/0018/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
-    </nav>
-  
 
 
           </div>
@@ -1132,8 +578,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

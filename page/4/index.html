@@ -247,6 +247,112 @@
 
 
   
+    <article id="Thu Sep 02 2021 00:00:00 GMT+0800 (中国标准时间)-2021-09-02 Ubuntu网络管理" class="article article-type-Thu Sep 02 2021 00:00:00 GMT+0800 (中国标准时间)  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/09/02/15/" target="_blank">Ubuntu网络管理</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/09/02/15/" class="archive-article-date">
+        <time datetime="2021-09-02T02:04:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-02</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h2 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a>网络配置</h2><p>Hyper-V 虚拟机安装ubuntu20.04系统，默认采用了dchp动态获取IP地址。可以通过手动配置，固定IP，这样再使用ssh工具来连接的时候就方便了，不需要每次修改IP地址。20.04配置与早期版本略有不同。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ifconfig    <span class="comment">#查看IP地址及网卡接口名称（一般eth0这样子的）</span></span><br><span class="line"></span><br><span class="line">sudo vim /etc/netplan/***.yaml  <span class="comment">#打开默认配置文件</span></span><br></pre></td></tr></table></figure>
+<p>默认使用dhcp方式的配置文件内容如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">network:</span><br><span class="line">  ethernets:</span><br><span class="line">    eth0:</span><br><span class="line">      dchp4: <span class="literal">true</span></span><br><span class="line">  version: 2</span><br></pre></td></tr></table></figure>
+    
+    <a class="article-more-a" href="/2021/09/02/15/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络配置</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/操作系统及网络//" class="article-tag-list-link color3">操作系统及网络</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/09/02/15/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="Mon Jul 12 2021 10:50:27 GMT+0800 (中国标准时间)-2021-07-12 使用chrome浏览器的override功能" class="article article-type-Mon Jul 12 2021 10:50:27 GMT+0800 (中国标准时间)  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -978,111 +1084,6 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2021/05/31/9/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2021-05-27 linux常用命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/05/27/8/" target="_blank">Linux常用命令</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/05/27/8/" class="archive-article-date">
-        <time datetime="2021-05-27T01:19:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-27</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <ol>
-<li><p>允许机器被远程ssh链接，需要安装openssh-server</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install openssh-server</span><br><span class="line"><span class="comment"># 使用如下命令查看是否安装ssh-server ，如果sshd 这个服务，则说明已经安装。</span></span><br><span class="line">ps -e | grep ssh</span><br></pre></td></tr></table></figure>
-    
-    <a class="article-more-a" href="/2021/05/27/8/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">shell</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/操作系统及网络//" class="article-tag-list-link color3">操作系统及网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/05/27/8/">展开全文 >></a>
     </p>
     
 
