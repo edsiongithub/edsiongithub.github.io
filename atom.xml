@@ -936,9 +936,9 @@
     <category term="ASP.NET Core" scheme="https://edsiongithub.github.io/categories/ASP-NET-Core/"/>
     
     
-    <category term="asp.net core" scheme="https://edsiongithub.github.io/tags/asp-net-core/"/>
-    
     <category term="IIS" scheme="https://edsiongithub.github.io/tags/IIS/"/>
+    
+    <category term="asp.net core" scheme="https://edsiongithub.github.io/tags/asp-net-core/"/>
     
   </entry>
   
