@@ -6,22 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://edsiongithub.github.io">
-  <title>dotnet core 6.0中使用autofac实现依赖注入 | 达文西的博客</title>
+  <title>Category: .Net | 达文西的博客</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="donet core 一大特点是，自带依赖注入。我们可以在startup或program中直接使用Add开头的扩展方法实现将服务注入。当然，微软也允许我们使用第三方依赖注入，比如Unity、AutoFacd等。由于我在搜索关于如何使用dotnet core中使用第三方依赖注入的文章，大多是dotnet core 3以前的代码，大家都在startup.cs中的进行配置。本文介绍如何在asp.net">
-<meta property="og:type" content="article">
-<meta property="og:title" content="dotnet core 6.0中使用autofac实现依赖注入">
-<meta property="og:url" content="https://edsiongithub.github.io/2022/04/24/37/index.html">
+  <meta name="description" content="华东师范大学信息化治理办公室，工程师一枚">
+<meta property="og:type" content="website">
+<meta property="og:title" content="达文西的博客">
+<meta property="og:url" content="https://edsiongithub.github.io/categories/Net/index.html">
 <meta property="og:site_name" content="达文西的博客">
-<meta property="og:description" content="donet core 一大特点是，自带依赖注入。我们可以在startup或program中直接使用Add开头的扩展方法实现将服务注入。当然，微软也允许我们使用第三方依赖注入，比如Unity、AutoFacd等。由于我在搜索关于如何使用dotnet core中使用第三方依赖注入的文章，大多是dotnet core 3以前的代码，大家都在startup.cs中的进行配置。本文介绍如何在asp.net">
+<meta property="og:description" content="华东师范大学信息化治理办公室，工程师一枚">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-04-24T07:08:44.000Z">
-<meta property="article:modified_time" content="2022-05-23T07:17:15.948Z">
 <meta property="article:author" content="达文西">
-<meta property="article:tag" content="dotnet core">
-<meta property="article:tag" content="依赖注入">
+<meta property="article:tag" content="dotnet,python,C#,linux,js,jquery,javascript,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="达文西的博客" type="application/atom+xml">
@@ -236,269 +233,76 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="Sun Apr 24 2022 15:08:44 GMT+0800 (中国标准时间)-20220520dotnetcore6使用autofac" class="article article-type-Sun Apr 24 2022 15:08:44 GMT+0800 (中国标准时间) " itemscope itemprop="blogPost">
-  <div class="article-inner">
+            
+  
+  
     
-      <header class="article-header">
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2022" class="archive-year">2022</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-Wed Nov 16 2022 15:08:44 GMT+0800 (中国标准时间)">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	
+<a href="/2022/11/16/38/" class="archive-article-date">
+        <time datetime="2022-11-16T07:08:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-11-16</time>
+</a>
+
+        </div>
+    	 
   
+    <h1 itemprop="name">
+	
+	  <a class="archive-article-title" href="/2022/11/16/38/" target="_blank">C#知识点</a>
   
-    <h1 class="article-title" itemprop="name">
-      dotnet core 6.0中使用autofac实现依赖注入
     </h1>
   
 
 
-  
-  
-        
-        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
-              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
-        </span>
-
-<a href="/2022/04/24/37/" class="archive-article-date">
-        <time datetime="2022-04-24T07:08:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-24</time>
-</a>
-
-  
-  
-    
-<div style="margin-top:10px;">
-  <span class="post-time">
-    <span class="post-meta-item-icon">
-      <!-- fonts.scss -->
-      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
-      <i class="icon-statistics"></i>
-      <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">820字</span>
-    </span>
-  </span>
-
-  <span class="post-time">
-    &nbsp; | &nbsp;
-    <span class="post-meta-item-icon">
-      <i class="icon-book icon"></i>
-      <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">3分</span>
-    </span>
-  </span>
-</div>
-
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p> donet core 一大特点是，自带依赖注入。我们可以在startup或program中直接使用Add开头的扩展方法实现将服务注入。当然，微软也允许我们使用第三方依赖注入，比如Unity、AutoFacd等。由于我在搜索关于如何使用dotnet core中使用第三方依赖注入的文章，大多是dotnet core 3以前的代码，大家都在startup.cs中的进行配置。本文介绍如何在asp.net core 6.0中实现依赖注入。</p>
-<span id="more"></span>
-
-<h2 id="dotnet-core中使用autofac"><a href="#dotnet-core中使用autofac" class="headerlink" title="dotnet core中使用autofac"></a>dotnet core中使用autofac</h2><p>在dotnetframework时代，我用过的第三方依赖注入工具是Unity。当我希望在dotnet core中使用第三方依赖注入时，微软官方将Unity，Autofac等都列为支持对象。当我搜索dotnet core中使用Unity时，出现的大多是支持netcore 3以前版本的。后来去查看Autofac的相关资料，也都是基于早期版本的dotnet core。于是自己动手改了改代码。</p>
-<h3 id="简单的注入"><a href="#简单的注入" class="headerlink" title="简单的注入"></a>简单的注入</h3><p>首先需要在项目中使用Nuget中引入包：Autofac.Extensions.DependencyInjection，Autofac.Extras.DynamicProxy。接下来需要创建演示用的服务（service），创建接口将服务暴露出来。为了演示方便，服务就写了一个简单的方法，在控制台中输出些内容。</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义接口</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IAutoFacDemo</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Test</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建服务，用一个简单的方法来演示</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">AutoFacDemo</span>:<span class="title">IAutoFacDemo</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Test</span>(<span class="params"></span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">&quot;************************************&quot;</span>);</span><br><span class="line">        Console.WriteLine(<span class="string">&quot;Auto Fac Demo Method.......&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>下面就是到了项目中添加Autofac作为依赖注入容器，来接管dotnet core自带的IoC容器。在Program.cs中修改默认代码如下。</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> builder = WebApplication.CreateBuilder(args);</span><br><span class="line"></span><br><span class="line"><span class="comment">//添加Autofac</span></span><br><span class="line">builder.Host.UseServiceProviderFactory(<span class="keyword">new</span> AutofacServiceProviderFactory());</span><br><span class="line"></span><br><span class="line"><span class="comment">// Add services to the container.</span></span><br><span class="line">builder.Services.AddControllers();</span><br><span class="line"></span><br><span class="line"><span class="comment">//将AutoFacDemo服务注册为单例模式</span></span><br><span class="line">builder.Services.AddSingleton&lt;IAutoFacDemo, AutoFacDemo&gt;();</span><br></pre></td></tr></table></figure>
-<p>下面创建控制器，演示注入服务，通过构造函数方式将服务注入。</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">HomeController</span> : <span class="title">Controller</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">readonly</span> IAutoFacDemo _autFac;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">HomeController</span>(<span class="params">IAutoFacDemo autFac</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        _autFac = autFac;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> IActionResult <span class="title">Index</span>(<span class="params"></span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        _autFac.Test();</span><br><span class="line">        <span class="keyword">return</span> Content(<span class="string">&quot;Function Invoked&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行项目，访问到Home控制器下的Index，观察控制台输出，能够正常将服务中Test方法内的内容输出出来。</p>
-<h3 id="利用反射注入整个命名空间"><a href="#利用反射注入整个命名空间" class="headerlink" title="利用反射注入整个命名空间"></a>利用反射注入整个命名空间</h3><p>上面已经能够将我们的服务，通过autofac注入进来。如果正式开发项目中，需要创建大量服务，每个服务都需要手动写<code>builder.Services.AddSingleton&lt;IAutoFacDemo, AutoFacDemo&gt;();</code>来注入的话，实在太麻烦了。接下来改造program.cs中代码，将整个命名空间的服务全部注入。</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//builder.Services.AddSingleton&lt;IAutoFacDemo, AutoFacDemo&gt;();</span></span><br><span class="line">builder.Host.ConfigureContainer&lt;ContainerBuilder&gt;((context,container) =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    container.RegisterModule(<span class="keyword">new</span> CommonAutofac());</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>这里需要注意的是program中的这段代码，在3.X以前版本中的startup.cs中，可以直接写一个ConfigureContainer方法。<br>其中CommonAutofac类代码定义如下：</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">CommonAutofac</span>:<span class="title">Autofac.Module</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Load</span>(<span class="params">ContainerBuilder builder</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">var</span> assemblyServices = Assembly.Load(<span class="string">&quot;CastleDemo&quot;</span>);</span><br><span class="line">        builder.RegisterAssemblyTypes(assemblyServices)</span><br><span class="line">            .SingleInstance() <span class="comment">//单例注入</span></span><br><span class="line">            .AsImplementedInterfaces() <span class="comment">//暴露所有接口</span></span><br><span class="line">            .EnableInterfaceInterceptors();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>关于3.x版本以前的startup类中的方法，如何被执行的，可以看参考中[3]的介绍。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>【1】(<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/core/extensions/dependency-injection-guidelines">https://docs.microsoft.com/zh-cn/dotnet/core/extensions/dependency-injection-guidelines</a>)</p>
-<p>【2】(<a target="_blank" rel="noopener" href="https://blog.csdn.net/e_hilary/article/details/118925668">https://blog.csdn.net/e_hilary/article/details/118925668</a>)</p>
-<p>【3】(<a target="_blank" rel="noopener" href="https://www.cnblogs.com/wucy/p/13886728.html">https://www.cnblogs.com/wucy/p/13886728.html</a>)</p>
-
-    
-
-    
-
-    
-    <div class="declare"> 
-      <ul class="post-copyright">
-        <li>
-          <strong>本文作者：</strong>
-          达文西
-        </li>
-        <li>
-          <strong>本文链接：</strong>
-          <a href="https://edsiongithub.github.io/2022/04/24/37/" title="dotnet core 6.0中使用autofac实现依赖注入" target="_blank">https://edsiongithub.github.io/2022/04/24/37/</a>
-        </li>
-        
-        <li>
-          <strong>版权声明： </strong>
+        <div class="article-info info-on-right">
           
-          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
-        </li>
-        
-      </ul>
-    </div>
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">dotnet core</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">依赖注入</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">C#</a>
         		</li>
       		
 		</ul>
 	</div>
 
-    
+          
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/ASP-NET-Core//" class="article-tag-list-link color3">ASP.NET Core</a>
+        			<a href="/categories/Net//" class="article-tag-list-link color5">.Net</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-    
-
-    
-    
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a> -->
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://edsiongithub.github.io/2022/04/24/37/" alt="微信分享二维码"> -->
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-
-    
-    <div class="clearfix"></div>
-  </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-
-<nav id="article-nav">
-  
-    <a href="/2022/04/24/36/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          EntityFrameworkCore迁移（Migration)支持多数据库
-        
-      </div>
-    </a>
   
   
-    <a href="/2022/04/02/35/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">20220402EnityFramework知识集</div>
-      <i class="icon-circle-right"></i>
-    </a>
+    </div></section>
   
-</nav>
 
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-
-  <div id="giteement-ctn"></div>
-  
-    <link rel="stylesheet" href="/lib/default.css">
-    <script src="/lib/giteement.browser.js"></script>
-  
-  <script>
-  <!-- id: "dotnet core 6.0中使用autofac实现依赖注入" -->
-  var giteement = new Giteement({
-    id: '20220424150844',
-    owner: 'gxwang',
-    repo: 'hexocomments',
-    backcall_uri: 'https://edsiongithub.github.io/',
-    oauth_uri: 'https://cors-anywhere.herokuapp.com/https://gitee.com/oauth/token',
-    oauth: {
-      client_id: '2ca528ed2c430f0c234e0bcfea432d11bb5c9347f5386137113afd65b02fe92f',
-      client_secret: '267a4ee02bfb0288470c5fb241f1c8d4bd03e4cb0cf8fa94bfddcf7894cded25'
-    },
-  })
-  giteement.render('giteement-ctn')
-  </script>
-
-
-
-
-
-
+    
 
 
           </div>
@@ -508,7 +312,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2021-2022 <a href="https://edsiongithub.github.io/" target="_blank">达文西</a>
+    		&copy; 2021-2023 <a href="https://edsiongithub.github.io/" target="_blank">达文西</a>
     	</div>
       	<div class="footer-right">
 			
@@ -539,10 +343,10 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
-		isCategory: false,
+		isCategory: true,
 		open_in_new: true,
 		toc_hide_index: true,
 		root: "/",
