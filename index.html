@@ -247,6 +247,116 @@
 
 
   
+    <article id="Wed Feb 01 2023 15:08:44 GMT+0800 (中国标准时间)-20230201HTTPSSSLTLS" class="article article-type-Wed Feb 01 2023 15:08:44 GMT+0800 (中国标准时间)  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2023/02/01/39/" target="_blank">一文搞懂HTTPS、SSL、TLS</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2023/02/01/39/" class="archive-article-date">
+        <time datetime="2023-02-01T07:08:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-01</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h2 id="HTTPS、SSL、TLS"><a href="#HTTPS、SSL、TLS" class="headerlink" title="HTTPS、SSL、TLS"></a>HTTPS、SSL、TLS</h2><h2 id="证书颁发机构"><a href="#证书颁发机构" class="headerlink" title="证书颁发机构"></a>证书颁发机构</h2><p>证书颁发机构（CA）是一个第三方机构，他的主要工作是三个：</p>
+<ol>
+<li>签发证书</li>
+<li>确认证书拥有者的身份</li>
+<li>提供证据证明证书是有效的</li>
+</ol>
+<p>参考连接中的两篇漫画，看完以后就能基本搞清楚HTTPS及使用TLS实现HTTPS的工作原理了。简洁明了，漫画方式看着也不枯燥，唯一缺点是全英文。</p>
+<p>参考连接</p>
+<p><a target="_blank" rel="noopener" href="https://howhttps.works/certificate-authorities/">The differences between HTTPS, SSL, and TLS</a></p>
+<p><a target="_blank" rel="noopener" href="https://howhttps.works/certificate-authorities/">Certificates and Certificate authorities</a></p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">http</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/web//" class="article-tag-list-link color4">web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2023/02/01/39/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="Wed Nov 16 2022 15:08:44 GMT+0800 (中国标准时间)-20221116csharpkeypoints" class="article article-type-Wed Nov 16 2022 15:08:44 GMT+0800 (中国标准时间)  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -255,7 +365,7 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2022/11/16/38/" target="_blank">C#知识点</a>
+	  <a class="article-title" href="/2022/11/16/38/" target="_blank">C#知识点（一）</a>
   
     </h1>
   
@@ -276,8 +386,117 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><ol>
-<li>重写对象Equals，ToString方法：默认ToString返回对象的命名空间+名字，Equals默认与==操作相同，当比较对象时，两个比较两个对象引用的内容是否一致。</li>
+    <p>本系列为dotnettutorial教程中关于C#语言的一些基础知识，前面语言基础介绍部分就简单过一下没做记录了。主要记录一些平时可能关注比较少，或是非常重要的一些知识点。</p>
+<p>参考连接： <a target="_blank" rel="noopener" href="https://dotnettutorials.net/course/csharp-dot-net-tutorials/">C#.NET Tutorials</a></p>
+<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><ol>
+<li><p>重写对象Equals，ToString方法：默认ToString返回对象的命名空间+名字，Equals默认与==操作相同，当比较对象时，两个比较两个对象引用的内容是否一致。</p>
+</li>
+<li><p>check/uncheck关键字：check关键字用于检查操作符左侧的变量是否会溢出，如果溢出抛出运行时错误。uncheck和编译器默认动作一致，不做检查。</p>
+</li>
+</ol>
+<h2 id="OOP面向对象"><a href="#OOP面向对象" class="headerlink" title="OOP面向对象"></a>OOP面向对象</h2><ol>
+<li>构造函数</li>
+</ol>
+<ol start="2">
+<li><p>析构函数</p>
+<ul>
+<li>析构函数只能在类中定义，不可用于struct中。</li>
+<li>只能定义一个析构函数，不可以有重载，不可以有参数，不可以有访问修饰符。</li>
+<li>析构函数无法显示调用，它是由GC来触发。可以请求GC执行析构GC.Collect()</li>
+<li>应用程序中应该避免使用空的析构函数。类包含析构函数的话，会创建一个Finalize函数链入口。如果析构函数仅调用父类析构函数，析构函数未执行任何操作，将会对垃圾回收性能造成影响。</li>
+</ul>
+</li>
+<li><p>垃圾回收</p>
+</li>
+</ol>
+<p>托管对象：运行在dotnet framework的CLR（公共语言运行时）中，由C#、VB.NET、F#等语言编写的程序。<br>非托管对象：需要自己的运行环境，如C、C++、Java等开发的程序。</p>
+<p>垃圾回收是一个独立服务，定期执行回收不再使用的托管对象（仅回收托管对象，非托管对象不受垃圾回收控制）。</p>
+<p>机制：用一个虚拟的代的概念，来作为回收内存依据。三代：0代、1代、2代。</p>
+<p>代用来表示对象是否需要继续被使用。初创建的对象，归入0代，垃圾回收开始运行，检查0代中是否有对象不再需要，如有重置其内存；其余需要继续使用的归入1代。垃圾回收再次运行时，同样执行0代检测，再执行对1代对象的检测。如1代中有不再使用的对象，释放其内存；并将1代中继续使用的对象归入2代中。</p>
+<p>优化：归入1代和2代中的对象，表明他们需要更多的被使用，在应用程序中需要驻留的时间更长。因此，垃圾回收不需要像检测0代一样，每次运行都去检测1代和2代的对象。这样就能够达到提升效率的目的。0代中越多对象，越高效，越多的内存能被利用到。</p>
+<p>托管对象，可以不需要析构函数，默认创建对象存放在0代中，这样内存利用效率最高，垃圾回收会尽快回收不再需要使用的对象。<br>非托管对象，需要手动释放。建议在调用非托管对象的类中，实现IDispose接口，使用公共的Dispose方法。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MyClass2</span> : <span class="title">IDisposable</span></span><br><span class="line">  &#123;</span><br><span class="line">      <span class="meta">#<span class="meta-keyword">region</span> IDisposable Support</span></span><br><span class="line">      <span class="keyword">private</span> <span class="built_in">bool</span> disposedValue = <span class="literal">false</span>; <span class="comment">// To detect redundant calls</span></span><br><span class="line">      <span class="function"><span class="keyword">protected</span> <span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">Dispose</span>(<span class="params"><span class="built_in">bool</span> disposing</span>)</span></span><br><span class="line">      &#123;</span><br><span class="line">          <span class="keyword">if</span> (!disposedValue)</span><br><span class="line">          &#123;</span><br><span class="line">              <span class="keyword">if</span> (disposing)</span><br><span class="line">              &#123;</span><br><span class="line">                  <span class="comment">// <span class="doctag">TODO:</span> dispose managed state (managed objects).</span></span><br><span class="line">              &#125;</span><br><span class="line">              disposedValue = <span class="literal">true</span>;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// <span class="doctag">TODO:</span> override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.</span></span><br><span class="line">      ~MyClass2()</span><br><span class="line">      &#123;</span><br><span class="line">          <span class="comment">// Do not change this code. Put cleanup code in Dispose(bool disposing) above.</span></span><br><span class="line">          Dispose(<span class="literal">false</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// This code added to correctly implement the disposable pattern.</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Dispose</span>(<span class="params"></span>)</span></span><br><span class="line">      &#123;</span><br><span class="line">          <span class="comment">// Do not change this code. Put cleanup code in Dispose(bool disposing) above.</span></span><br><span class="line">          Dispose(<span class="literal">true</span>);</span><br><span class="line">          <span class="comment">// <span class="doctag">TODO:</span> uncomment the following line if the finalizer is overridden above.</span></span><br><span class="line">          GC.SuppressFinalize(<span class="keyword">this</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="meta">#<span class="meta-keyword">endregion</span></span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li>disposedValue: 该变量用来标记是否为重复调用。</li>
+<li>Dispose(bool disposing): 在该方法内编写实际销毁托管资源和非托管资源的代码程序。disposing作为输入变量，指示是否需要销毁托管资源。第一次请求时，该变量检查disposedValue值为false，执行clean-up活动，并在结束时将值设置为true。重复调用时，则不再执行clean-up活动。</li>
+<li>~UmmanagedResource(): 默认该析构函数代码都被注释掉了。如果取消注释，则需要自己编写清理托管资源的程序，然后调用Dispose(false)方法来清理非托管资源。只有当Dispose(bool disposing)方法包含了释放非托管资源的程序时，才能重写析构函数或终结器函数。</li>
+<li>Dispose(): 该方法用于暴露给外部程序，用于外部程序调用来清理托管和非托管资源。在该方法内部调用私有方法Dispose(true)来真正实现清理工作。如果重写析构函数或者终结器函数，还需要调用GC.SuppressFinalize(this)，告诉CLR不要调用析构函数或终结器函数。只有重写了析构函数或终结器函数才需要将该行代码取消注释。</li>
+</ul>
+<p><strong>总结</strong></p>
+<blockquote>
+<p>托管资源不需要考虑垃圾回收，交给GC即可。（比如下面封装中创建的Bank类）<br>包含非托管资源的类，需要实现IDispose接口（比如FileStream类，它的父类Stream就实现了IDispose接口）<br>StreamIDispose.png</p>
+</blockquote>
+<ol start="4">
+<li>访问修饰符</li>
+</ol>
+<p>类的访问修饰符只能是public 和 internal</p>
+<table>
+<thead>
+<tr>
+<th>修饰符</th>
+<th>类内部</th>
+<th>继承类</th>
+<th>非继承类</th>
+<th>不同程序集继承类</th>
+<th>不同程序集非继承类</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>private</td>
+<td>YES</td>
+<td>NO</td>
+<td>NO</td>
+<td>NO</td>
+<td>NO</td>
+</tr>
+<tr>
+<td>public</td>
+<td>YES</td>
+<td>YES</td>
+<td>YES</td>
+<td>YES</td>
+<td>YES</td>
+</tr>
+<tr>
+<td>protected</td>
+<td>YES</td>
+<td>YES</td>
+<td>NO</td>
+<td>YES</td>
+<td>NO</td>
+</tr>
+<tr>
+<td>internal</td>
+<td>YES</td>
+<td>YES</td>
+<td>YES</td>
+<td>NO</td>
+<td>NO</td>
+</tr>
+<tr>
+<td>protected internal</td>
+<td>YES</td>
+<td>YES</td>
+<td>YES</td>
+<td>YES</td>
+<td>NO</td>
+</tr>
+<tr>
+<td>private protected</td>
+<td>YES</td>
+<td>YES</td>
+<td>NO</td>
+<td>NO</td>
+<td>NO</td>
+</tr>
+</tbody></table>
+<ol start="5">
+<li>封装<br>优点： 数据保护（保存数据前进行验证）、 实现数据隐藏、 安全、 灵活性、 控制<br>使用属性get、set提供数据存取，类似于使用两个公共的方法</li>
+</ol>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Bank</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">double</span> _Amount;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">double</span> Amount</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">get</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> _Amount;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">set</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">value</span>&lt;<span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">&quot;Input Positive Value&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                _Amount = <span class="keyword">value</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 使用方法提供数据隐藏</span></span><br><span class="line"><span class="comment">    public double GetAmount()</span></span><br><span class="line"><span class="comment">    &#123;</span></span><br><span class="line"><span class="comment">        return _Amount;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    public void SetAmount(double amount)</span></span><br><span class="line"><span class="comment">    &#123;</span></span><br><span class="line"><span class="comment">        if(amount&lt;0)</span></span><br><span class="line"><span class="comment">        &#123;</span></span><br><span class="line"><span class="comment">            throw new Exception(&quot;Input Positive Value&quot;);</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment">        else</span></span><br><span class="line"><span class="comment">        &#123;</span></span><br><span class="line"><span class="comment">            this.Amount = amount;</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    */</span>    </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>抽象: 把必要的功能展示出来并不关注具体实现细节的过程。</li>
 </ol>
 
     
@@ -983,114 +1202,6 @@
 
 
   
-    <article id="Mon Mar 28 2022 21:51:12 GMT+0800 (中国标准时间)-20220329Linq翻译集" class="article article-type-Mon Mar 28 2022 21:51:12 GMT+0800 (中国标准时间)  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2022/03/28/0039/" target="_blank">Linq知识集二（翻译）</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2022/03/28/0039/" class="archive-article-date">
-        <time datetime="2022-03-28T13:51:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-28</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p> 原文起始连接：<a target="_blank" rel="noopener" href="https://dotnettutorials.net/course/linq/">https://dotnettutorials.net/course/linq/</a></p>
-<p>说明：翻译接上篇，上一篇翻译到了LINQ中的操作符，所谓操作符就是LINQ中的一系列扩展方法，用来对数据操作的一系列方法（如查询、过滤、排序等）。我们已经介绍了查询的Select方法，接下来继续。</p>
-    
-    <a class="article-more-a" href="/2022/03/28/0039/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">翻译</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Linq</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/C//" class="article-tag-list-link color3">C#</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/C/翻译//" class="article-tag-list-link color3">翻译</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2022/03/28/0039/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
@@ -1389,6 +1500,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">EntityFrameworkCore</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">http</a>
               </li>
             
             <div class="clearfix"></div>
